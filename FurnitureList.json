@@ -1,0 +1,24 @@
+[
+  {
+    "type": "Desk",
+    "properties": {
+      "type": "COMPUTER",
+      "material": "WOOD",
+      "length": 50,
+      "width": 20,
+      "height": 100,
+      "name": "Desk"
+    }
+  },
+  {
+    "type": "Table",
+    "properties": {
+      "type": "DINNING_ROOM",
+      "material": "WOOD",
+      "length": 80,
+      "width": 60,
+      "height": 50,
+      "name": "Table"
+    }
+  }
+]
