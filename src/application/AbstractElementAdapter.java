@@ -1,9 +1,10 @@
 package application;
 
+import com.victorkzk.furniture.Furniture;
 import com.google.gson.*;
-import furniture.Furniture;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class AbstractElementAdapter implements JsonSerializer<Furniture>, JsonDeserializer<Furniture> {
     @Override
@@ -21,6 +22,13 @@ public class AbstractElementAdapter implements JsonSerializer<Furniture>, JsonDe
         JsonObject jsonObject = json.getAsJsonObject();
         String type = jsonObject.get("type").getAsString();
         JsonElement element = jsonObject.get("properties");
+        ArrayList<Class> plugins = Controller.getLoadedPlugins();
+        for (int i = 0; i < plugins.size(); i++) {
+            System.out.println(plugins.get(i).getName());
+            if (plugins.get(i).getName().equals(type)) {
+                return context.deserialize(element, plugins.get(i));
+            }
+        }
 
         try {
             String thepackage = "furniture.";

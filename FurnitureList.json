@@ -1,24 +1,24 @@
 [
   {
-    "type": "Desk",
+    "type": "Chest",
     "properties": {
-      "type": "COMPUTER",
+      "type": "CELLARETTE",
       "material": "WOOD",
-      "length": 50,
+      "length": 20,
       "width": 20,
-      "height": 100,
-      "name": "Desk"
+      "height": 15,
+      "name": "Chest"
     }
   },
   {
-    "type": "Table",
+    "type": "Sofa",
     "properties": {
-      "type": "DINNING_ROOM",
-      "material": "WOOD",
-      "length": 80,
-      "width": 60,
-      "height": 50,
-      "name": "Table"
+      "type": "CANAPE",
+      "material": "GLASS",
+      "length": 100,
+      "width": 80,
+      "height": 40,
+      "name": "Sofa"
     }
   }
 ]

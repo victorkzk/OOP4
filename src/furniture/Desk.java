@@ -1,5 +1,7 @@
 package furniture;
 
+import com.victorkzk.furniture.Furniture;
+
 public class Desk extends Furniture{
 
     public enum Type {

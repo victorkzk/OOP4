@@ -1,22 +1,29 @@
 package application;
 
 import com.google.gson.GsonBuilder;
+import com.victorkzk.furniture.Furniture;
 import furniture.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
@@ -37,8 +44,11 @@ public class Controller implements Initializable {
     private ChoiceBox materialBox;
     @FXML
     private ListView listView;
+    @FXML
+    private Pane pane;
 
-    ObservableList<Furniture> furnitureList = FXCollections.observableArrayList();
+    private ObservableList<Furniture> furnitureList = FXCollections.observableArrayList();
+    private static ArrayList<Class> plugins = new ArrayList<>();
 
     Furniture furniture = null;
     boolean createNew = false;
@@ -162,10 +172,43 @@ public class Controller implements Initializable {
     private void loadPluginClick(){
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(null);
-
+        PluginLoader pluginLoader = new PluginLoader(file);
+        plugins.add(pluginLoader.getFurnitureClass());
+        createButton(plugins.size() - 1);
     }
 
-    private void createButton() {
-        Button button = new Button("ass");
+
+
+    private void createButton(int index) {
+        Furniture newFurniture = createFurniture(index);
+        Button button = new Button();
+        button.setText(newFurniture.toString());
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                clearFields();
+                createNew = true;
+                furniture = createFurniture(index);
+                updateTypeList();
+            }
+        });
+        button.setLayoutY(index * 31);
+        button.setPrefWidth(117);
+        pane.getChildren().add(button);
+    }
+
+    private Furniture createFurniture (int index) {
+        try {
+            Class[] cArg = new Class[3];
+            cArg[0] = cArg[1] = cArg[2] = int.class;
+            Furniture res = (Furniture)plugins.get(index).getDeclaredConstructor(cArg).newInstance(0, 0, 0);
+            return res;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static ArrayList<Class> getLoadedPlugins() {
+        return plugins;
     }
 }

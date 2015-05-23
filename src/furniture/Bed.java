@@ -1,6 +1,8 @@
 package furniture;
 
-public class Bed extends Furniture{
+import com.victorkzk.furniture.Furniture;
+
+public class Bed extends Furniture {
 
     public enum Type {
         BUNK, WATERBED, MURPHY, STEIGH, CANOPY

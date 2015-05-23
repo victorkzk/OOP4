@@ -1,6 +1,8 @@
 package furniture;
 
-public class Cabinetry extends Furniture{
+import com.victorkzk.furniture.Furniture;
+
+public class Cabinetry extends Furniture {
 
     public enum Type {
         CLOSET, CUPBOARD, HUTCH, PANTRY, KITCHEN, HOOSIER

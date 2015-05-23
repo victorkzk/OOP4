@@ -8,7 +8,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="409.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="409.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
       <Button layoutX="14.0" layoutY="49.0" mnemonicParsing="false" onAction="#tableBtnClick" prefHeight="25.0" prefWidth="117.0" text="Table" />
       <Button layoutX="14.0" layoutY="115.0" mnemonicParsing="false" onAction="#bedBtnClick" prefHeight="25.0" prefWidth="117.0" text="Bed" />
@@ -27,5 +27,6 @@
       <Button layoutX="436.0" layoutY="356.0" mnemonicParsing="false" onAction="#deleteClick" prefHeight="25.0" prefWidth="117.0" text="Delete" />
       <ListView layoutX="567.0" layoutY="363.0" prefHeight="11.0" prefWidth="12.0" />
       <Button layoutX="13.0" layoutY="356.0" mnemonicParsing="false" onAction="#loadPluginClick" prefHeight="25.0" prefWidth="117.0" text="Load plugin" />
+      <Pane fx:id="pane" layoutX="14.0" layoutY="208.0" prefHeight="145.0" prefWidth="117.0" />
    </children>
 </AnchorPane>
